@@ -2,7 +2,7 @@ import requests,urllib
 
 APP_ACCESS_TOKEN =  '1705754005.29541b0.156ba485dedb482cbc95c8e430efa9ec'
 #Token Owner : snehabhuyan
-#Sandbox Users : mahak_sachdeva,khattarsakshi,insta.mriu.test.5
+#Sandbox Users : mahak_sachdeva,khattarsakshi,insta.mriu.test.5,love_with_destinations
 
 BASE_URL = 'https://api.instagram.com/v1/'
 
@@ -226,7 +226,7 @@ def start_bot():
             get_user_post(insta_username)
         elif choice=="5":
             insta_username = raw_input("Enter the username of the user: ")
-            like_a_post("insta_username")
+            like_a_post(insta_username)
         elif choice=="6":
             insta_username =raw_input("Enter the username of the user:")
             post_a_comment(insta_username)
