@@ -1,5 +1,6 @@
 import requests,urllib
-
+from details import get_user_id
+from hashtag import find_hashtag,plot_graph,find_post
 APP_ACCESS_TOKEN =  '1705754005.29541b0.156ba485dedb482cbc95c8e430efa9ec'
 #Token Owner : snehabhuyan
 #Sandbox Users : mahak_sachdeva,khattarsakshi,insta.mriu.test.5,love_with_destinations,vikrant7am
@@ -28,20 +29,6 @@ def self_info():
         '''
         Function declaration to get the ID of a user by username
         '''
-
-def get_user_id(insta_username):
-    request_url = (BASE_URL + 'users/search?q=%s&access_token=%s') % (insta_username, APP_ACCESS_TOKEN)
-    print 'GET request url : %s' % (request_url)
-    user_info = requests.get(request_url).json()
-
-    if user_info['meta']['code'] == 200:
-        if len(user_info['data']):
-            return user_info['data'][0]['id']
-        else:
-            return None
-    else:
-        print 'Status code other than 200 received!'
-    exit()
 
 
 '''
@@ -209,9 +196,12 @@ def start_bot():
         print "4.Get the recent post of a user by username\n"
         print "5.Like the recent post of a user\n"
         print "6.Make a comment on the recent post of a user\n"
+        print "7.Get the hashtags used in a user's caption\n"
+        print "8.Get the number of hashtags "
+        print "9.Plot the graph"
 
 
-        print "7.Exit"
+        print "10.Exit"
 
         choice=raw_input("Enter you choice: ")
         if choice=="1":
@@ -230,11 +220,24 @@ def start_bot():
         elif choice=="6":
             insta_username =raw_input("Enter the username of the user:")
             post_a_comment(insta_username)
-
-
-
+        elif choice=="7":
+            insta_username=raw_input("Enter the username of the user")
+            find_hashtag(insta_username)
+        elif choice=="8":
+            insta_username=raw_input("Enter the username of the user")
+            find_post(insta_username)
         elif choice=="9":
+            insta_username=raw_input("Enter the username of the user")
+            plot_graph(insta_username)
+
+
+
+
+
+        elif choice=="10":
             exit()
         else:
             print "wrong choice"
+
+start_bot()
 

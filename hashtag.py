@@ -1,6 +1,11 @@
 import requests
+import matplotlib.pyplot as plt; plt.rcdefaults()
+import numpy as np
+import matplotlib.pyplot as plt
+from details import get_user_id
+
 APP_ACCESS_TOKEN =  '1705754005.29541b0.156ba485dedb482cbc95c8e430efa9ec'
-from insta import get_user_id
+
 BASE_URL = "https://api.instagram.com/v1/"
 
 # list for the hashtags in the caption of a user
@@ -46,6 +51,20 @@ def find_post():
                 counter+=1
         IMAGE.append(counter)
 
+# function to plot the graph
+def plot_graph():
+    objects= HASHTAG
+    y_pos= np.arange(len(objects))
+    performance= IMAGE
+
+    plt.bar(y_pos, performance,align='center',alpha=0.5)
+    plt.xticks(y_pos, objects)
+    plt.ylabel('Popularity')
+    plt.title('Trending analysis')
+
+    plt.show()
+
+
 
 
 # function to get the post of a user having hashtag
@@ -53,7 +72,7 @@ def find_post():
 def get_post_with_hashtag(username):
     user_id=get_user_id(username)
     find_hashtag(user_id)
-    #print "No of images with "+hashtag+" : "+str(no_of_images)
+
 
 
 
@@ -66,5 +85,6 @@ def get_image_with_hashtag(username):
     for h in HASHTAG:
         print str(sno+1) + h +" : "+ str(IMAGE[sno])
         sno += 1
+    plot_graph()
 
 get_image_with_hashtag("vikrant7am")
