@@ -2,7 +2,7 @@ import requests,urllib
 
 APP_ACCESS_TOKEN =  '1705754005.29541b0.156ba485dedb482cbc95c8e430efa9ec'
 #Token Owner : snehabhuyan
-#Sandbox Users : mahak_sachdeva,khattarsakshi,insta.mriu.test.5,love_with_destinations
+#Sandbox Users : mahak_sachdeva,khattarsakshi,insta.mriu.test.5,love_with_destinations,vikrant7am
 
 BASE_URL = 'https://api.instagram.com/v1/'
 
@@ -238,4 +238,3 @@ def start_bot():
         else:
             print "wrong choice"
 
-start_bot()
